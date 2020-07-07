@@ -1,0 +1,12 @@
+<h1>{{ questao.questao_text }}</h1>
+{% if msg_erro %}<p><strong>{{ msg_erro}}</strong></p>{% endif %}
+
+<form action="{% url 'votacoes:votar' questao_id %}" method="post">
+{% csrf_token %}
+{% for opcao in questao.opcao_st all %}
+    <imput tipe="radio" name="opcao" id="opcao"{{ foorloop.counter }} value="{{ opcao.id }}">
+    <label form="opcao{{ forloop.counter }}">{{ opcao.opcao_text }}</label><br>
+{% endfor %}
+    <imput tipe="submit" vallue="votar">
+    
+</form>
